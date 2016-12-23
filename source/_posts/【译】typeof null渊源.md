@@ -2,7 +2,7 @@
 title: 【译】typeof null渊源
 id: 38
 categories:
-  - 未分类
+  - js
 date: 2016-10-14 17:15:00
 tags:
 ---
@@ -29,9 +29,9 @@ tags:
 *   undefined(JSVAL_VOID) 为integer -2^30(整型长度边界值)
 *   null(JSVAL_NULL) 为机器码NULL的指针，或者说：为零的object类型标签
 现在，关于为什么typeof null是一个object应该已经呼之欲出了；它检测一个他的type tag并且返回"object"。下面列出typeof执行规则。
-<pre> JS_PUBLIC_API(JSType)
-    JS_TypeOfValue(JSContext *cx, JSVAL v)
-    {
+<pre> 
+    JS_PUBLIC_API(JSType)
+    JS_TypeOfValue(JSContext *cx, JSVAL v){
         JSType type = JSTYPE_VOID;
         JSObject *obj;
         JSObjectOps *ops;

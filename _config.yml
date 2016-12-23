@@ -4,11 +4,11 @@
 
 # Site
 title: 名字有点帅
-subtitle:
+subtitle: 写点干货
 description:
 author: 张帅
-language:
-timezone:
+language: zh-CN
+timezone: UTC
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -63,9 +63,17 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: material
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+  type: ftpsync
+  host: hz209322.ftp.aliapp.com
+  user: hz209322
+  pass: Zs19941128
+  remote: /htdocs/
+  port: 21
+  ignore: ['ewh_logreport_no_delete']
+  connections: 1
+  verbose: false
