@@ -29,7 +29,7 @@ tags:
 *   undefined(JSVAL_VOID) 为integer -2^30(整型长度边界值)
 *   null(JSVAL_NULL) 为机器码NULL的指针，或者说：为零的object类型标签
 现在，关于为什么typeof null是一个object应该已经呼之欲出了；它检测一个他的type tag并且返回"object"。下面列出typeof执行规则。
-<pre> 
+```js
     JS_PUBLIC_API(JSType)
     JS_TypeOfValue(JSContext *cx, JSVAL v){
         JSType type = JSTYPE_VOID;
@@ -61,19 +61,20 @@ tags:
         }
         return type;
     }
-</pre>
+```
 解释下以上代码：
 
 *   （1），引擎首先检测值是否是undefined.他做了这样的比较：
-<pre>        #define JSVAL_IS_VOID(v)  ((v) == JSVAL_VOID)
-
-</pre>
+```js       
+#define JSVAL_IS_VOID(v)  ((v) == JSVAL_VOID)
+```
 
 *   下一个（2）是检测该值是否具有object type。 如果它可使用call被调用（3）或其存在内部属性[[Class]]标记为函数（4），则v是函数。 否则，它是一个对象。 这是由typeof null生成的结果。
 *   后续检查是针对number，string和boolean。 甚至没有明确检查null。
-<pre>    #define JSVAL_IS_NULL(v)  ((v) == JSVAL_NULL)
+```js
+   #define JSVAL_IS_NULL(v)  ((v) == JSVAL_NULL)
+```
 
-</pre>
 这似乎是一个非常明显的bug，但不要忘记，第一个版本的JavaScript完成只用了极少的时间。
 
 * * *
