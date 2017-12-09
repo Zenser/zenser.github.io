@@ -69,8 +69,8 @@ theme: material
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: ftpsync
-  host: hz209322.ftp.aliapp.com
-  user: hz209322
+  host: hz231688.ftp.aliapp.com
+  user: hz231688
   pass: Zs19941128
   remote: /htdocs/
   port: 21
