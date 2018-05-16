@@ -8,6 +8,10 @@ categories:
   - Vue
 ---
 
+* * *
+基于vue version2.1.4
+* * *
+
 ## Vue.nextTick( [callback, context] )
 Vue 官方解释用法
 > 在下次 DOM 更新循环结束之后执行延迟回调。在修改数据之后立即使用这个方法，获取更新后的 DOM。
