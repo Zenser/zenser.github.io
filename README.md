@@ -11,7 +11,7 @@ layout:
 | page | source |
 | draft | source/_drafts |
 
-##生成静态文件
+##编译
 <pre>hexo generate</pre>
 
 ##部署(直接部署到远程web托管)
