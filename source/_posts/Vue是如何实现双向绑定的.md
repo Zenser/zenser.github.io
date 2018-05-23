@@ -136,11 +136,14 @@ Vue 屏蔽了各种input底层的不同，抽象出了v-model的语法，减轻�
 ```
 传递value属性；监听input事件，触发后更新Model的值，完美！
 
-当然你可以自定义v-model的映射字段名称，默认就是这样咯
+当然你可以在组件中自定义v-model的映射字段名称，默认就是这样咯
 ``` js
-model: {
-    prop: 'value',
-    event: 'input'
+export default {
+    model: {
+        prop: 'value',
+        event: 'input'
+    },
+    ...
 }
 ```
 
