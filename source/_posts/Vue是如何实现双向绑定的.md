@@ -1,6 +1,7 @@
 ---
 title: Vue是如何实现双向绑定的
-date: 2018-05-16 10:03:58
+date: 2018-05-23 09:40:58
+thumbnail: /images/2018/two_way.png
 tags:
     - Vue
 ---
