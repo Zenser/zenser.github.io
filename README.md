@@ -2,20 +2,32 @@
 
 ##写文章
 
-<pre>hexo new [layout] &lt;title></pre>
+```bash
+hexo new [layout] <title>
+```
+
 layout:
 
-| 布局 | 路径 |
-| ------| ------ |
-| post | source/_posts |
-| page | source |
-| draft | source/_drafts |
+| layout | path |
+| ----- | --------------- |
+| post  | source/\_posts  |
+| page  | source          |
+| draft | source/\_drafts |
 
 ##编译
-<pre>hexo generate</pre>
 
-##部署(直接部署到远程web托管)
-<pre>hexo deploy</pre>
+```bash
+hexo generate
+```
+
+##部署(直接部署到远程 web 托管)
+
+```bash
+hexo deploy
+```
 
 ##编译+部署
-<pre>hexo g -d</pre>
+
+```bash
+hexo g -d
+```
