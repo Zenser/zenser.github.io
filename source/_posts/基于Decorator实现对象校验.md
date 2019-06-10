@@ -72,6 +72,7 @@ function submit() {
 2. 可作用于类或对象中的属性和方法
 3. 初始化时从上至下运行，执行时从内向外
 
+**代码来源： [http://es6.ruanyifeng.com/#docs/decorator#%E6%96%B9%E6%B3%95%E7%9A%84%E4%BF%AE%E9%A5%B0](http://es6.ruanyifeng.com/#docs/decorator#%E6%96%B9%E6%B3%95%E7%9A%84%E4%BF%AE%E9%A5%B0)**
 ```js
 function dec(id){
   console.log('evaluated', id);
