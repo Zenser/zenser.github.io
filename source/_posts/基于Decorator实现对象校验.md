@@ -72,7 +72,23 @@ function submit() {
 2. 可作用于类或对象中的属性和方法
 3. 初始化时从上至下运行，执行时从内向外
 
-![执行顺序](/images/2019/decorator_exec_order.png)
+```js
+function dec(id){
+  console.log('evaluated', id);
+  return (target, property, descriptor) => console.log('executed', id);
+}
+
+class Example {
+    @dec(1)
+    @dec(2)
+    method(){}
+}
+// evaluated 1
+// evaluated 2
+// executed 2
+// executed 1
+```
+
 
 ## 使用 dvalidator
 

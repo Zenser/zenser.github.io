@@ -122,8 +122,8 @@ qrcode:
 #    Prettify
 #        theme: # Available value in /source/css/prettify/[theme].min.css
 prettify:
-    enable: false
-    theme: "github-v2"
+    enable: true
+    theme: "tomorrow-night-bright"
 
 #    Hanabi (https://github.com/egoist/hanabi)
 #        line_number: [true/false] # Show line number for code block
