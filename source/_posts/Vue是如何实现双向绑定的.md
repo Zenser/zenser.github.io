@@ -3,7 +3,9 @@ title: Vue是如何实现双向绑定的
 date: 2018-05-23 09:40:58
 thumbnail: /images/2018/two_way.png
 tags:
-    - Vue
+  - Vue
+categories:
+  - Vue
 ---
 * * *
 本文主要探讨双向绑定，不对响应式做讨论哈
