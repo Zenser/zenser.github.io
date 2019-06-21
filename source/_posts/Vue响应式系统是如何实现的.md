@@ -4,6 +4,8 @@ tags:
   - Vue
 date: 2018-07-07 15:09:02
 thumbnail: /images/2018/observe-watcher-flow.png
+categories:
+  - Vue
 ---
 
 

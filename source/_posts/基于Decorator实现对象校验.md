@@ -5,6 +5,8 @@ thumbnail: /images/2019/dvalidator_poster.png
 tags:
   - Decorator
   - js
+categories:
+  - js
 ---
 
 **Decorator 已经提案很久了，已经有过很大的改动。本文基于老的提案实现。**
