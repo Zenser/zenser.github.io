@@ -2,6 +2,8 @@
 title: Vue响应式系统是如何实现的
 tags:
   - Vue
+  - 响应式
+  - Observer
 date: 2018-07-07 15:09:02
 thumbnail: /images/2018/observe-watcher-flow.png
 categories:

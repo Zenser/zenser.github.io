@@ -5,6 +5,7 @@ categories:
   - js
 date: 2016-10-14 17:15:00
 tags:
+  - js
 ---
 
 > 原文：[http://www.2ality.com/2013/10/typeof-null.html](http://www.2ality.com/2013/10/typeof-null.html)

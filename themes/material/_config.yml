@@ -7,7 +7,7 @@ head:
     favicon: "/img/favicon.png"
     high_res_favicon: "/img/favicon.png"
     apple_touch_icon: "/img/favicon.png"
-    keywords: 张帅|前端|HTML|CSS|JS|javascript|hexo|vue
+    keywords: 张帅|令狐洋葱|前端|HTML|CSS|JS|javascript
     site_verification:
         google:
         baidu:
@@ -237,8 +237,8 @@ sidebar:
 comment:
     use: disqus
     shortname: zhangshuai # duoshuo or disqus shortname
-    changyan_appid:
-    changyan_conf:
+    changyan_appid: cyukST0ln
+    changyan_conf: prod_73be42003c5d9b4b7836520d3c85d364
     changyan_thread_key_type: path
     livere_data_uid:
     gitment_repo:   # git repo of the hexo

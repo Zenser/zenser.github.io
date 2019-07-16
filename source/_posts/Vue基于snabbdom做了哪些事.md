@@ -4,6 +4,8 @@ date: 2019-06-20 10:47:13
 thumbnail: /images/2019/vue_snabbdom_poster.png
 tags:
   - Vue
+  - snabbdom
+  - virtual Dom
 categories:
   - Vue
 ---

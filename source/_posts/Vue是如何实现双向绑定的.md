@@ -4,6 +4,7 @@ date: 2018-05-23 09:40:58
 thumbnail: /images/2018/two_way.png
 tags:
   - Vue
+  - 双向绑定
 categories:
   - Vue
 ---
