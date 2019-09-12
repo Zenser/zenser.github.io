@@ -1,6 +1,7 @@
 ---
-title: 使用Dvalidator重新定义对象校验
+title: 重新定义对象校验 - Dvalidator
 date: 2019-09-12 18:43:32
+thumbnail: /images/2019/dvalidator.jpeg
 tags:
   - Decorator
   - js
