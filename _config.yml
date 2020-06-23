@@ -65,15 +65,3 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: material
 
-# Deployment
-## Docs: https://hexo.io/docs/deployment.html
-deploy:
-  type: ftpsync
-  host: hz236431.ftp.aliapp.com
-  user: hz236431
-  pass: wccZTrtrCNy7NR6B
-  remote: /htdocs/
-  port: 21
-  ignore: ['ewh_logreport_no_delete']
-  connections: 1
-  verbose: false
