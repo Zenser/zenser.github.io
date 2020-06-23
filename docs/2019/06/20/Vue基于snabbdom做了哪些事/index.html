@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+    <link rel="dns-prefetch" href="https://zhangshuai.disqus.com">
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Vue基于snabbdom做了哪些事 | 
+        
+        令狐洋葱
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content>
+    <meta name="keywords" content="张帅|令狐洋葱|前端|HTML|CSS|JS|javascript,Vue,snabbdom,virtual Dom">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?Fbz5/+uPXhX0mNe1oAVuXg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-bright.min.css?8VgE6WqhtH02IzxbAnMvKA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="令狐洋葱">
+    <meta name="msapplication-starturl" content="http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="令狐洋葱">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Vue基于snabbdom做了哪些事 | 令狐洋葱">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content>
+    <meta property="og:article:tag" content="Vue"> <meta property="og:article:tag" content="snabbdom"> <meta property="og:article:tag" content="virtual Dom"> 
+
+    
+        <meta property="article:published_time" content="Thu Jun 20 2019 10:47:13 GMT+0000">
+        <meta property="article:modified_time" content="Tue Jul 16 2019 14:26:21 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html",
+    "headline": "Vue基于snabbdom做了哪些事",
+    "datePublished": "Thu Jun 20 2019 10:47:13 GMT+0000",
+    "dateModified": "Tue Jul 16 2019 14:26:21 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "张帅",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "令狐洋葱",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": ",Vue,snabbdom,virtual Dom张帅|令狐洋葱|前端|HTML|CSS|JS|javascript",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Snabbdom-做了哪些事？"><span class="post-toc-number">2.</span> <span class="post-toc-text">Snabbdom 做了哪些事？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#modules"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">modules</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hooks"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">Hooks</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#patch-oldVnode-newVnode-函数"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">patch(oldVnode, newVnode) 函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#snabbdom-h"><span class="post-toc-number">2.0.4.</span> <span class="post-toc-text">snabbdom/h</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue-相比-Snabbdom，patch-过程中有哪些不一样的地方？"><span class="post-toc-number">3.</span> <span class="post-toc-text">Vue 相比 Snabbdom，patch 过程中有哪些不一样的地方？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#组件"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">组件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生命周期"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">生命周期</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#静态节点优化"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">静态节点优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hydrate"><span class="post-toc-number">3.0.4.</span> <span class="post-toc-text">hydrate</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#patch-整体流程"><span class="post-toc-number">4.</span> <span class="post-toc-text">patch 整体流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vue-中有哪些功能是基于-patch-中的-Hooks-实现的？"><span class="post-toc-number">5.</span> <span class="post-toc-text">Vue 中有哪些功能是基于 patch 中的 Hooks 实现的？</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#directives"><span class="post-toc-number">5.0.1.</span> <span class="post-toc-text">directives</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ref"><span class="post-toc-number">5.0.2.</span> <span class="post-toc-text">ref</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#style"><span class="post-toc-number">5.0.3.</span> <span class="post-toc-text">style</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#写在后面"><span class="post-toc-number">6.</span> <span class="post-toc-text">写在后面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考</span></a></li>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        <!-- Custom Thumbnail -->
+        <div class="post_thumbnail-custom mdl-card__media mdl-color-text--grey-50" style="background-image:url(/images/2019/vue_snabbdom_poster.png)">
+    
+            <p class="article-headline-p">
+                Vue基于snabbdom做了哪些事
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>张帅</strong>
+        <span>6月 20, 2019</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Vue/">Vue</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/snabbdom/">snabbdom</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/virtual-Dom/">virtual Dom</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Vue基于snabbdom做了哪些事&url=http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html&pic=http://shuaizhang.top/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Vue基于snabbdom做了哪些事&url=http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html&via=张帅" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前有简单看过 Vue patch 部分的源码，了解了是基于 <a href="https://github.com/snabbdom/snabbdom" target="_blank" rel="noopener">Snabbdom</a> 库实现的。最近想详细了解下 Vue 处理 vnode patch 的整个过程，想知道它在 Snabbdom 之上做了哪些事情？所以带着这个问题，写了这篇文章来记录。</p>
+<h2 id="Snabbdom-做了哪些事？"><a href="#Snabbdom-做了哪些事？" class="headerlink" title="Snabbdom 做了哪些事？"></a>Snabbdom 做了哪些事？</h2><blockquote>
+<p>A virtual DOM library with focus on simplicity, modularity, powerful features and performance.<br>(一个虚拟 DOM 库，专注于简单性，模块化，强大的功能和性能。)</p>
+</blockquote>
+<p>Snabbdom 核心代码大约只有 200 行。它提供了模块化架构，具有丰富的功能，可通过自定义模块进行扩展。在了解核心 patch 前，需要先了解 snabbdom 的模块化架构思想。</p>
+<h4 id="modules"><a href="#modules" class="headerlink" title="modules"></a>modules</h4><p>在节点的生命周期里做一些任务，来扩展 Snabbdom ，就可以称之为模块。<br>Snabbdom 在 patch 的过程中会注入很多钩子(hooks)。模块实现就是基于这些钩子，钩子可以理解为 vnode 节点的生命周期。</p>
+<p>比如 eventlisteners 模块：</p>
+<ol>
+<li>create： 节点创建时添加时间监听(addEventListener)</li>
+<li>update： 节点更新时移除老节点事件，添加新事件</li>
+<li>destroy： 节点销毁时，移除老节点事件</li>
+</ol>
+<h4 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h4><p><code>Hooks</code> 是一种挂载 vnode 生命周期的方式。软件开发领域有类似这样的设计思想，比如版本管理工具 <code>git</code>。Snabbdom 中的模块就是基于此来实现扩展的。当然，也可以传递 hook 配置，实现在 vnode 生命周期里做一些事（这种只针对单个节点，而模块针对所有节点），例如：</p>
+<pre><code class="js">h(&#39;div.row&#39;, {
+  key: movie.rank,
+  hook: {
+    insert: vnode =&gt; {
+      movie.elmHeight = vnode.elm.offsetHeight
+    }
+  }
+})
+</code></pre>
+<p>Vue 中的指令就是基于此实现的。具体的生命周期可以参考官方文档：<a href="https://github.com/snabbdom/snabbdom#hooks" target="_blank" rel="noopener">https://github.com/snabbdom/snabbdom#hooks</a></p>
+<h4 id="patch-oldVnode-newVnode-函数"><a href="#patch-oldVnode-newVnode-函数" class="headerlink" title="patch(oldVnode, newVnode) 函数"></a>patch(oldVnode, newVnode) 函数</h4><p>Snabbdom 的核心部分，patch 函数由 <code>snabbdom.init</code> 创建，初始化时提供绑定 hook 的模块。<br>如果 <code>oldVnode</code> 是具有父节点的 DOM 元素，则 <code>newVnode</code> 将变为 DOM 节点，并且传递的元素将被创建的 DOM 节点替换。如果传递的是个 <code>vnode</code> 实例，则会比对此节点和递归对比它的子节点，并做 dom 更新。这一块网上的源码解析文章也比较多，这里就不多介绍了。</p>
+<h4 id="snabbdom-h"><a href="#snabbdom-h" class="headerlink" title="snabbdom/h"></a>snabbdom/h</h4><p><code>h</code> 函数用来创建 vnode 实例，类比 Vue render 函数中的参数 <code>h</code>，Vue 中扩展了入参。比如第一个参数 <code>tag</code>，Vue 可以是对象或函数；第二个参数 <code>data</code>，Vue 增加了一些特有的功能比如：<code>scopedSlots</code>, <code>slot</code>, <code>directive</code>, <code>ref</code>… 等。</p>
+<h2 id="Vue-相比-Snabbdom，patch-过程中有哪些不一样的地方？"><a href="#Vue-相比-Snabbdom，patch-过程中有哪些不一样的地方？" class="headerlink" title="Vue 相比 Snabbdom，patch 过程中有哪些不一样的地方？"></a>Vue 相比 Snabbdom，patch 过程中有哪些不一样的地方？</h2><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><ul>
+<li><p>Vue 中有组件的概念，组件同样是可以嵌套的，所有就存在父组件和子组件。父组件 render 函数执行后，子组件并没有被初始化，仅仅是创建了一个特殊的 vnode 节点，而这个节点上会绑定一些 hooks: <code>init</code>, <code>prepatch</code>, <code>insert</code>, <code>destroy</code>。当父组件 patch 执行的过程中，遇到子组件的话，会调用 hook: init 方法，此方法中才会初始化组件实例。后续 insert hook 触发时，相应的会调用组件 <code>mounted</code> 生命周期钩子。这一块源码可以查看 <a href="https://github.com/vuejs/vue/blob/dev/src/core/vdom/create-component.js#L36-L97" target="_blank" rel="noopener">https://github.com/vuejs/vue/blob/dev/src/core/vdom/create-component.js#L36-L97</a></p>
+</li>
+<li><p><code>setScope</code> 也是在 patch 执行过程中调用的，它会往 dom 节点上增加 <code>${scopedId}</code> 属性，用来实现 <code>scoped</code> 样式功能。</p>
+</li>
+<li><p>patch 过程中会更新 <code>ref</code> 到上下文实例上。</p>
+</li>
+<li><p>因为有组件概念，所以 Vue 中创建 vnode 第一个参数 tag 可以是对象或函数，Snabbdom 上只能是字符串。</p>
+</li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><ul>
+<li>Vue 去掉了 <code>pre</code> 和 <code>post</code> 2 个钩子，这 2 个钩子分别用来在 patch 执行前后调用的</li>
+<li>Vue 中 <code>init</code> 钩子只对组件节点生效，而 Snabbdom 中所有节点都可定义 <code>init</code> hooks</li>
+<li>Vue 新增了 <code>active</code> 钩子，用来处理 <code>&lt;keep-alive&gt;</code> 嵌套 <code>&lt;transition&gt;</code> 组件产生的<a href="https://github.com/vuejs/vue/issues/4339" target="_blank" rel="noopener">边界问题</a></li>
+</ul>
+<h4 id="静态节点优化"><a href="#静态节点优化" class="headerlink" title="静态节点优化"></a>静态节点优化</h4><p>Vue 会对静态节点做性能优化。</p>
+<ul>
+<li>编译时：Vue compiler 会对 template 中的静态节点特殊处理：创建静态节点的方法会存放在 <code>staticRenderFns</code> 属性里。除了纯 html 语法产生的静态节点外，<code>v-once</code>, <code>v-pre</code> 也会产生静态节点。</li>
+<li>运行时：当组件初始化时，静态节点会被保存到实例 <code>_staticTrees</code> 数组中。组件更新重新触发 render 时，不会重新创建 vnode 节点，直接使用之前已有的静态节点。进而不会触发 <code>patchVnode</code> 操作。</li>
+</ul>
+<h4 id="hydrate"><a href="#hydrate" class="headerlink" title="hydrate"></a>hydrate</h4><p>对于 Vue 服务端渲染输出的 html，客户端初始化挂载节点时，会把已经渲染好的 dom 和 vnode 一一绑定，以达到同构的效果，<code>hydrate</code> 函数就做了这个任务。</p>
+<h2 id="patch-整体流程"><a href="#patch-整体流程" class="headerlink" title="patch 整体流程"></a>patch 整体流程</h2><p>我整理了一份比较详细的 <code>patch</code> 流程图。<br>一些细节没有写入，比如：<code>updateChildren</code> diff 过程、异步组件、keep-alive、hydrate…</p>
+<p><img src="/images/2019/vue_patch_process.png" alt="Vue Patch Process"></p>
+<h2 id="Vue-中有哪些功能是基于-patch-中的-Hooks-实现的？"><a href="#Vue-中有哪些功能是基于-patch-中的-Hooks-实现的？" class="headerlink" title="Vue 中有哪些功能是基于 patch 中的 Hooks 实现的？"></a>Vue 中有哪些功能是基于 patch 中的 Hooks 实现的？</h2><h4 id="directives"><a href="#directives" class="headerlink" title="directives"></a>directives</h4><p>Vue 2 中的指令就是基于 hooks 实现的，从 directive 的生命周期来看：</p>
+<ol>
+<li>bind：节点上绑定新的指令时调用 -&gt; hooks: create, update</li>
+<li>inserted：节点上绑定新的指令，若 hooks == create ，则在节点被 insert 时调用；若 hooks == update，则直接调用</li>
+<li>update：节点上已存在指令时调用 -&gt; hooks: update</li>
+<li>componentUpdated： 节点上已存在指令，且在 hooks: postpatch 触发时调用，此时指令所在组件的 VNode 及其子 VNode 已全部更新。</li>
+<li>unbind：节点被销毁时调用 -&gt; hooks: destroy</li>
+</ol>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>vnode 创建、更新、销毁时都会更新所在组件上的 <code>$refs</code> 属性。<br>patch 过程中处理了子组件为空时，父组件指向的 ref 为 undefined 的<a href="https://github.com/vuejs/vue/issues/3455" target="_blank" rel="noopener">边界情况</a></p>
+<h4 id="style"><a href="#style" class="headerlink" title="style"></a>style</h4><p>对于动态绑定 style，Vue 还会智能的往不支持的属性前加厂商前缀。</p>
+<pre><code class="js">const normalize = cached(function(prop) {
+  emptyStyle = emptyStyle || document.createElement(&#39;div&#39;).style
+  prop = camelize(prop)
+  if (prop !== &#39;filter&#39; &amp;&amp; prop in emptyStyle) {
+    return prop
+  }
+  const capName = prop.charAt(0).toUpperCase() + prop.slice(1)
+  for (let i = 0; i &lt; vendorNames.length; i++) {
+    const name = vendorNames[i] + capName
+    if (name in emptyStyle) {
+      return name
+    }
+  }
+})
+</code></pre>
+<p>Vue 还支持 value 数组写法。比如 <code>{display: [&quot;-webkit-box&quot;, &quot;-ms-flexbox&quot;, &quot;flex&quot;]}</code></p>
+<p>Snabbdom 中对 style 增加了 hooks: remove，这个是为了实现节点被移除时的过渡动效，而 Vue 对过渡动效的处理封装在了 <code>&lt;transition&gt;</code> 组件中。</p>
+<h2 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h2><p>其实 Vue 中还有很多功能都依赖 vnode 节点 patch 的过程，<code>transition</code> 的功能也比较多，这里暂时不深入了。<br>由于本人理解有限，文中如有任何问题欢迎留言指正。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://github.com/snabbdom/snabbdom" target="_blank" rel="noopener">https://github.com/snabbdom/snabbdom</a></li>
+<li><a href="https://github.com/vuejs/vue" target="_blank" rel="noopener">https://github.com/vuejs/vue</a></li>
+</ul>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+    <!-- 使用 DISQUS -->
+<div id="disqus-comment">
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_config = function () {
+        this.page.url = 'http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://shuaizhang.top/2019/06/20/Vue基于snabbdom做了哪些事/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+</script>
+<script type="text/ls-javascript" id="disqus-thread-script">
+    queue.offer(function() {
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document;
+                var s = d.createElement('script');
+                s.src = '//zhangshuai.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', + new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        });
+</script>
+
+</div>
+<style>
+    #disqus-comment{
+        background-color: #eee;
+        padding: 2pc;
+    }
+</style>
+
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/09/13/使用Dvalidator重新定义对象校验/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2019/06/05/基于Decorator实现对象校验/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="张帅's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        zsprog@163.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="zsprog@163.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/09/">九月 2019<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2019/06/">六月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/07/">七月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/08/">八月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/12/">十二月 2016<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/10/">十月 2016<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/HTTP/">HTTP<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/categories/Vue/">Vue<span class="sidebar_archives-count">5</span></a></li><li><a class="sidebar_archives-link" href="/categories/js/">js<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/categories/前端/">前端<span class="sidebar_archives-count">1</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+
+<!-- Theme Material -->
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+    <a href="https://blog.viosey.com/index.php/Material.html" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+             sidebar.about_theme
+            <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="http://weibo.com/u/3006327442" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/Zenser" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year></span>&nbsp;令狐洋葱
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+   <!-- 使用 DISQUS js 代码 -->
+<script id="dsq-count-scr" src="//zhangshuai.disqus.com/count.js" async></script>
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+    
+        
+            <script>lsloader.load("prettify_js","/js/prettify.min.js?WN07fivHQSMKWy7BmHBB6w==", true)</script>
+        
+    
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 0000;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
